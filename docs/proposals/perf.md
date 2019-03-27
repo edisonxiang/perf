@@ -3,7 +3,7 @@ title: Performance Test Proposal
 authors:
     - "@edisonxiang"
     - "@samy2019"
-    - "@pavan18"
+    - "@pavan187"
 approvers:
   - "@qizha"
   - "@CindyXing"
