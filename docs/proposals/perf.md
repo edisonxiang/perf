@@ -108,7 +108,7 @@ Measure the capacity of devices can be supported by KubeEdge Edge Part.
 
 Different protocols are considered to test between KubeEdge Edge Part and devices.
 E.g. Bluetooth, MQTT, ZigBee, BACnet and Modbus and so on.
-Currenly Less than 20ms latency can be accepted in Edge IoT scenario.
+Currenly less than 20ms latency can be accepted in Edge IoT scenario.
 Two kinds of test cases can be adopted: emulators of different devices and actual devices.
 
 ### 4. Application Deployment from Cloud to Edge
