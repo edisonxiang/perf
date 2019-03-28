@@ -33,7 +33,6 @@ Currently KubeEdge test is focused on automated test suites for unit, integratio
 
 This proposal lists the possible performance test scenarios and test cases for KubeEdge.
 
-
 ### Goals
 
 * Benchmark the performance against the following Service Level Objectives:
@@ -70,6 +69,7 @@ Test Cases:
 * Measure Edge Nodes join in K8S Cluster startup time.
 
   Different numbers of Edge Nodes need be tested.
+
   Edge Nodes numbers are one of: [1, 10, 20, 50, 100, 200]
 
   This test case ends with all Edge Nodes are in `Ready` status.
@@ -90,8 +90,10 @@ This scenario is expected to measure the southbound API of KubeEdge.
 
 Test Cases:
 * Measure the latency between KubeEdge Edge Part and device.
+
   Device numbers are one of: [1, 10, 20, 50, 100, 200]
 * Measure the throughput between KubeEdge Edge Part and device.
+
   Device numbers are one of: [1, 10, 20, 50, 100, 200]
 
 As the result of the latency and throughput with different device numbers, we can evaluate Scalability of Devices for KubeEdge Edge Part. Measure the capacity of devices can be supported by KubeEdge Edge Part.
@@ -100,7 +102,7 @@ As the result of the latency and throughput with different device numbers, we ca
 Different protocols are considered between KubeEdge Edge Part and devices.
 E.g. Bluetooth, MQTT, ZigBee, BACnet and Modbus and so on.
 Currenly Less than 20ms latency can be accepted in Edge IoT scenario.
-We can distinguish two kinds of test cases: emulators of different devices and real devices.
+We can distinguish two kinds of test cases: emulators of different devices and actual devices.
 
 ### 4. Application Deployment from Cloud to Edge
 <img src="../images/perf/perf-app-deploy.png">
@@ -109,17 +111,24 @@ This scenario is expected to measure the performance of KubeEdge from Cloud to E
 
 Test Cases:
 * Measure the pod startup time with docker images exist in the Edge Node.
+
   Edge Nodes numbers are one of: [1, 10, 20, 50, 100, 200]
+
   Pods numbers per Edge Node are one of: [1, 2, 5, 10, 20]
+
 * Measure the pod startup time without docker images exist in the Edge Node.
+
   Edge Nodes numbers are one of: [1, 10, 20, 50, 100, 200]
+
   Pods numbers per Edge Node are one of: [1, 2, 5, 10, 20]
 
 As the result of the pod startup time, we can evaluate Scalability of KubeEdge Edge Nodes.
 Measure the capacity of Edge Nodes can be supported by KubeEdge Cloud Part.
 <img src="../images/perf/perf-multi-edgenodes.png">
 
-Currently the simulation of generating virtual KubeEdge Edge Nodes are being analyzed with Kubernetes  `Kubemark` framework. The following deployment types of KubeEdge Edge Nodes can be used for test:
+Currently the simulation of generating virtual KubeEdge Edge Nodes are being analyzed with Kubernetes  `Kubemark` framework.
+
+The following deployment types of KubeEdge Edge Nodes can be used for test:
 * Deploy virtual KubeEdge Edge Nodes in single VM.
 * Deploy actual KubeEdge Edge Node per dedicated VM.
 
@@ -130,10 +139,15 @@ This scenario is expected to measure the e2e performance of KubeEdge.
 
 Test Cases:
 * Measure CPU and Memory Usage of KubeEdge Cloud Part.
+
   Edge Nodes numbers are one of: [1, 10, 20, 50, 100, 200]
+
   Device numbers are one of: [1, 10, 20, 50, 100, 200]
+
 * Measure CPU and Memory Usage of KubeEdge Edge Part.
+
   Edge Nodes numbers are one of: [1, 10, 20, 50, 100, 200]
+
   Device numbers are one of: [1, 10, 20, 50, 100, 200]
 
 These test cases should be run in both idle and under heavy load.
