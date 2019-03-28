@@ -26,7 +26,6 @@ status: Alpha
     * [Test Tools](#test-tools)
     * [Metrics Tools](#metrics-tools)
   * [Test Scenarios](#test-Scenarios)
-    * [Test Scenario](#test-scenario)
 
 ## Motivation
 
@@ -88,13 +87,14 @@ Measure Scalability: Scaling out the no.of KubeEdge nodes under different load c
 Measure the capacity of edge nodes can be supported by KubeEdge Cloud Part.
 
 Types of Deployments:
+
 Deployment-Type-1: Deploy K8s Master-VM1, CloudCore-VM2, EdgeCores-VM2
+
 Deployment-Type-2: Deploy K8s Master-VM1, CloudCore-VM2, EdgeCores-VM3
+
 Deployment-Type-3: Deploy K8s Master-VM1, CloudCore-VM2, Each EdgeCores in dedicate VM.
 
 For Deployment-Type-1:
-<img src="../images/perf/per-deploy-type1.png">
-
 For Type-1 Deployment, We use a dedicated machine for Master setup running(All master components running inside pods). In another machine, we run cloud-core and EdgeCore processes.
 
 Achieving Multiple-Edgecore in Same VM:
@@ -110,15 +110,12 @@ E2E framework will use the external MQTT broker for event bus communication, and
 And while doing a node registration, Framework will make sure the node register with different node-id for respective edge_core. So that all the edgecore node will be registered to master as a different edge nodes.
 
 For Deployment-Type-2:
-<img src="../images/perf/per-deploy-type2.png">
 
 For Type-2 Deployment, We use a dedicated machine for Master setup running(All master components running inside pods). In another machine we run cloud-core and dedicated machine for multiple EdgeCore processes.
 
 Achieving multiple edgecore process is same as above deployment scenario.
 
 For Deployment-Type-3:
-<img src="../images/perf/per-deploy-type3.png">
-
 Currently the simulation of generating Virtual nodes are being analyzed with Kubernetes  “KubeMark” framework.
 
 ### Scalability of Devices
