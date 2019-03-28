@@ -50,14 +50,14 @@ This proposal lists the possible performance test scenarios and test cases for K
 
 ## Proposal
 
-## Test Framework
+### Test Framework
 <img src="../images/perf/perf-test-framework.png">
 
-## Test Tools
-* [kubemark](https://github.com/kubernetes/kubernetes/tree/master/test/kubemark)
-* [fortio](https://github.com/fortio/fortio)
+### Test Tools
+* [Kubemark](https://github.com/kubernetes/kubernetes/tree/master/test/kubemark)
+* [Fortio](https://github.com/fortio/fortio)
 
-## Metrics Tools
+### Metrics Tools
 * [Prometheus](https://github.com/prometheus/prometheus)
 * [Grafana](https://github.com/grafana/grafana)
 
