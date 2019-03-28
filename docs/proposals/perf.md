@@ -10,8 +10,8 @@ approvers:
   - "@kevin-wangzefeng"
   - "@Baoqiang-Zhang"
   - "@m1093782566"
-creation-date: 2019-03-27
-last-updated: 2019-03-27
+creation-date: 2019-03-28
+last-updated: 2019-03-28
 status: Alpha
 ---
 
@@ -46,7 +46,7 @@ This proposal lists the possible performance test scenarios and test cases for K
 
 ### Non-goals
 
-* To design the specific implementation of performance test.
+* To design the specific implementation of single performance test.
 
 ## Proposal
 
@@ -63,96 +63,77 @@ This proposal lists the possible performance test scenarios and test cases for K
 
 ## Test Scenarios
 
-### Application Deployment from Cloud to Edge
-<img src="../images/perf/perf-app-deploy.png">
-
-Measure Northbound API responsiveness.
-Measure the latency, throughput between cloud part and edge part.
-E.g. Application Deployment from Cloud to Edge (Also measure pod startup time).
-We need to test the nodes with existing images or non-existing images.
-For e2e Pod startup latency with image exist in the node: pods and their containers with existing images start within 5s*.
-For e2e Pod startup latency without image exist in the node: pods and their containers without image exist start within 10s* (considering the standard image pull from docker hub with specified image size).
-Burst API’s : Time to start 100*#nodes pods, measured from test scenario start until observing last Pod as ready.
-
-### Update Device Twin State from Cloud to Device
-<img src="../images/perf/perf-update-devicetwin.png">
-
-Measure Northbound and Southbound API responsiveness.
-E.g. Syncing Expected Device Twin State between Cloud and Device (Also measure Device Twin State Syncing time).
-
-### Scalability of KubeEdge Edge Nodes
-<img src="../images/perf/perf-multi-edgenodes.png">
-
-Measure Scalability: Scaling out the no.of KubeEdge nodes under different load conditions
-Measure the capacity of edge nodes can be supported by KubeEdge Cloud Part.
-
-Types of Deployments:
-
-Deployment-Type-1: Deploy K8s Master-VM1, CloudCore-VM2, EdgeCores-VM2
-
-Deployment-Type-2: Deploy K8s Master-VM1, CloudCore-VM2, EdgeCores-VM3
-
-Deployment-Type-3: Deploy K8s Master-VM1, CloudCore-VM2, Each EdgeCores in dedicate VM.
-
-For Deployment-Type-1:
-For Type-1 Deployment, We use a dedicated machine for Master setup running(All master components running inside pods). In another machine, we run cloud-core and EdgeCore processes.
-
-Achieving Multiple-Edgecore in Same VM:
-
-Currently when we run the Edgecore, Edgecore will start the 2 handlers while bringing up the edge_core process, which are:
-MQTT internal broker on (tcp  0.0.0.0:1884)
-Edged Handler (tcp 0.0.0.0:10255)
-
-E2E Framework will have to make sure to disable these handlers while bringing up the edgecore.
-
-E2E framework will use the external MQTT broker for event bus communication, and  disable the Edged Handler (disabling edged handler will have no impact as its only being used for GET pods from podmanager).
-
-And while doing a node registration, Framework will make sure the node register with different node-id for respective edge_core. So that all the edgecore node will be registered to master as a different edge nodes.
-
-For Deployment-Type-2:
-
-For Type-2 Deployment, We use a dedicated machine for Master setup running(All master components running inside pods). In another machine we run cloud-core and dedicated machine for multiple EdgeCore processes.
-
-Achieving multiple edgecore process is same as above deployment scenario.
-
-For Deployment-Type-3:
-Currently the simulation of generating Virtual nodes are being analyzed with Kubernetes  “KubeMark” framework.
-
-### Scalability of Devices
-<img src="../images/perf/perf-multi-devices.png">
-
-Measure Scalability: Scaling out the no.of Devices per node under different load conditions
-
-Measure the capacity of devices can be supported by KubeEdge Edge Part.
-We should consider different protocol test between the edge part and the devices. E.g. MQTT, Bluetoothe, ZigBee, BACnet and Modbus and so on.
-Less than 20ms latency can be accepted in edge IoT scenario. Also we can distinguish two kinds of test cases: emulators of different devices and real devices.
-
-### Create Device/Device Model from Cloud
-<img src="../images/perf/perf-create-device.png">
-
-Measure the latency, throughput between k8s API Server and cloud part.
-Create Device/Device Model from Cloud.
-T is time cost.
-Measure Latency and Throughput between k8S API Server and KubeEdge Cloud Part
-
-### Report Device Status to Edge
-<img src="../images/perf/perf-report-devicestatus.png">
-
-Measure the latency, throughput between the edge part and the IoT devices.
-
-
-### Edge Nodes join K8S Cluster
+### 1. Edge Nodes join in K8S Cluster
 <img src="../images/perf/perf-edgenodes-join-cluster.png">
 
-Measure Edge Nodes join K8S Cluster Startup time.
+Test Cases:
+* Measure Edge Nodes join in K8S Cluster startup time.
 
-### Measure CPU and Memory Usage of KubeEdge Cloud Part
-When the system is both idle and under heavy load and run a long time.
-The heavy load need to be defined including the northbound and southbound load.
-The running time also need to be defined.
+  Different numbers of Edge Nodes need be tested.
+  Edge Nodes numbers are one of: [1, 10, 20, 50, 100, 200]
 
-### Measure CPU and Memory Usage of KubeEdge Edge Part
-Measure the cpu, memory of KubeEdge Edge Part.
-When the system is both idle and under heavy load and run a long time.
-The heavy load need to be defined including the northbound and southbound load.
-The running time also need to be defined.
+  This test case ends with all Edge Nodes are in `Ready` status.
+
+### 2. Create Device/Device Model from Cloud
+<img src="../images/perf/perf-create-device.png">
+
+This scenario is expected to measure the northbound API of KubeEdge.
+
+Test Cases:
+* Measure the latency between K8S API Server and KubeEdge Cloud Part.
+* Measure the throughput between K8S API Server and KubeEdge Cloud Part.
+
+### 3. Report Device Status to Edge
+<img src="../images/perf/perf-report-devicestatus.png">
+
+This scenario is expected to measure the southbound API of KubeEdge.
+
+Test Cases:
+* Measure the latency between KubeEdge Edge Part and device.
+  Device numbers are one of: [1, 10, 20, 50, 100, 200]
+* Measure the throughput between KubeEdge Edge Part and device.
+  Device numbers are one of: [1, 10, 20, 50, 100, 200]
+
+As the result of the latency and throughput with different device numbers, we can evaluate Scalability of Devices for KubeEdge Edge Part. Measure the capacity of devices can be supported by KubeEdge Edge Part.
+<img src="../images/perf/perf-multi-devices.png">
+
+Different protocols are considered between KubeEdge Edge Part and devices.
+E.g. Bluetooth, MQTT, ZigBee, BACnet and Modbus and so on.
+Currenly Less than 20ms latency can be accepted in Edge IoT scenario.
+We can distinguish two kinds of test cases: emulators of different devices and real devices.
+
+### 4. Application Deployment from Cloud to Edge
+<img src="../images/perf/perf-app-deploy.png">
+
+This scenario is expected to measure the performance of KubeEdge from Cloud to Edge.
+
+Test Cases:
+* Measure the pod startup time with docker images exist in the Edge Node.
+  Edge Nodes numbers are one of: [1, 10, 20, 50, 100, 200]
+  Pods numbers per Edge Node are one of: [1, 2, 5, 10, 20]
+* Measure the pod startup time without docker images exist in the Edge Node.
+  Edge Nodes numbers are one of: [1, 10, 20, 50, 100, 200]
+  Pods numbers per Edge Node are one of: [1, 2, 5, 10, 20]
+
+As the result of the pod startup time, we can evaluate Scalability of KubeEdge Edge Nodes.
+Measure the capacity of Edge Nodes can be supported by KubeEdge Cloud Part.
+<img src="../images/perf/perf-multi-edgenodes.png">
+
+Currently the simulation of generating virtual KubeEdge Edge Nodes are being analyzed with Kubernetes  `Kubemark` framework. The following deployment types of KubeEdge Edge Nodes can be used for test:
+* Deploy virtual KubeEdge Edge Nodes in single VM.
+* Deploy actual KubeEdge Edge Node per dedicated VM.
+
+### 5. Update Device Twin State from Cloud to Device
+<img src="../images/perf/perf-update-devicetwin.png">
+
+This scenario is expected to measure the e2e performance of KubeEdge.
+
+Test Cases:
+* Measure CPU and Memory Usage of KubeEdge Cloud Part.
+  Edge Nodes numbers are one of: [1, 10, 20, 50, 100, 200]
+  Device numbers are one of: [1, 10, 20, 50, 100, 200]
+* Measure CPU and Memory Usage of KubeEdge Edge Part.
+  Edge Nodes numbers are one of: [1, 10, 20, 50, 100, 200]
+  Device numbers are one of: [1, 10, 20, 50, 100, 200]
+
+These test cases should be run in both idle and under heavy load.
