@@ -29,7 +29,7 @@ status: Alpha
 
 ## Motivation
 
-Currently KubeEdge test is focused on automated test suites for unit, integration and e2e test and validation.
+Currently KubeEdge test is focused on automated test suites for unit, integration and E2E test and validation.
 KubeEdge allows the users to manage large scale of edge nodes, devices from cloud.
 A set of test specifically performance test can be used to determine the non-functional
 characteristics of KubeEdge such as latency, throughput, cpu usage, memory usage and so on.
@@ -45,7 +45,7 @@ This proposal lists the possible performance test scenarios and test cases for K
   * Scalability: potential scaling capacity under different load conditions.
   * CPU Usage: measure the cpu usage of KubeEdge under different load conditions.
   * Memory Usage: measure the memory usage of KubeEdge under different load conditions.
-* Performance test can be able to run against both dockerized and un-dockerized version of KubeEdge.
+* Performance test should be able to run against both dockerized and un-dockerized version of KubeEdge.
 
 ### Non-goals
 
@@ -136,16 +136,46 @@ Measure the capacity of Edge Nodes can be supported by KubeEdge Cloud Part.
 The simulation of generating virtual KubeEdge Edge Nodes are being analyzed with `Kubemark` framework.
 
 The following deployment types of KubeEdge Edge Nodes can be used for test:
-* Deploy virtual KubeEdge Edge Nodes in single VM.
-* Deploy actual KubeEdge Edge Node per dedicated VM.
+
+#### Deployment Type 1
+<img src="../images/perf/perf-deploy-type-1.png">
+
+Deploy K8S Master in VM1, KubeEdge Cloud Part in VM2, all KubeEdge Edge Nodes in VM2.
+
+For Deployment Type 1, we use a dedicated VM for K8S Master setup(All master components running inside VM1).
+In another VM, we run KubeEdge Cloud Part and all KubeEdge Edge Nodes processes together in the same VM.
+
+Currently when we bring up the Edge Node process, it will start two handlers:
+* MQTT internal broker on (tcp 0.0.0.0:1884).
+* Edged Handler (tcp 0.0.0.0:10255).
+
+E2E Framework will have to make sure to disable these handlers while bringing up the Edge Node process.
+E2E Framework will use the external MQTT broker for event bus communication and disable the Edged Handler
+(Disabling edged handler will have no impact as its only being used for GET pods from podmanager).
+While doing Edge Node registration, E2E Framework will make sure the Edge Node
+register with different node-id for respective Edge Node process, so that all the Edge Node
+will be registered to K8S Master as a different Edge Node.
+
+#### Deployment Type 2
+<img src="../images/perf/perf-deploy-type-2.png">
+
+Deploy K8s Master in VM1, KubeEdge Cloud Part in VM2, all KubeEdge Edge Nodes in VM3.
+
+For Deployment Type 2, We use a dedicated vm for K8S Master setup(All master components running inside VM1).
+In another VM we run KubeEdge Cloud Part. Dedicated VM for multiple Edge Node processes.
+
+#### Deployment Type 3
+<img src="../images/perf/perf-deploy-type-3.png">
+
+Deploy K8S Master in VM1, KubeEdge Cloud Part in VM2, each KubeEdge Edge Node in dedicated VM.
 
 ### 5. Update Device Twin State from Cloud to Device
 <img src="../images/perf/perf-update-devicetwin.png">
 
-This scenario is expected to measure the e2e performance of KubeEdge.
+This scenario is expected to measure the E2E performance of KubeEdge.
 
 Test Cases:
-* Measure e2e latency.
+* Measure E2E latency.
 
   Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200]`.
 
