@@ -125,6 +125,8 @@ Test Cases:
 
   Pods numbers per Edge Node are one of `[1, 2, 5, 10, 20]`.
 
+  This test case ends with all pods are in `Ready` status.
+
 As the result of the pod startup time, we can evaluate scalability of KubeEdge Edge Nodes.
 Measure the capacity of Edge Nodes can be supported by KubeEdge Cloud Part.
 <img src="../images/perf/perf-multi-edgenodes.png">
