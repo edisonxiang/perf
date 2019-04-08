@@ -77,6 +77,7 @@ This proposal lists the possible performance test scenarios and test cases for K
 | Disk Type                      |  High I/O                                    |
 | Disk Size                      |  40GB                                        |
 | Count                          |  1                                           |
+
 This VM is used to run Kubernetes Master Services.
 
 #### KubeEdge Cloud Part
@@ -89,6 +90,7 @@ This VM is used to run Kubernetes Master Services.
 | Disk Type                      |  High I/O                                    |
 | Disk Size                      |  40GB                                        |
 | Count                          |  1                                           |
+
 This VM is used to run KubeEdge Cloud Part Services.
 
 #### KubeEdge Edge Part Simulation
@@ -101,6 +103,7 @@ This VM is used to run KubeEdge Cloud Part Services.
 | Disk Type                      |  High I/O                                    |
 | Disk Size                      |  40GB                                        |
 | Count                          |  1                                           |
+
 This VM is used to simulate numbers of KubeEdge Edge Nodes.
 
 ## Test Scenarios
