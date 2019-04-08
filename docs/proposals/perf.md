@@ -84,8 +84,8 @@ Test Cases:
 This scenario is expected to measure the northbound API of KubeEdge.
 
 Test Cases:
-* Measure the latency between K8S API Server and KubeEdge Cloud Part.
-* Measure the throughput between K8S API Server and KubeEdge Cloud Part.
+* Measure the latency between K8S Master and KubeEdge Cloud Part.
+* Measure the throughput between K8S Master and KubeEdge Cloud Part.
 
 ### 3. Report Device Status to Edge
 <img src="../images/perf/perf-report-devicestatus.png">
