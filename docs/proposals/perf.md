@@ -129,8 +129,6 @@ As the result of the pod startup time, we can evaluate scalability of KubeEdge E
 Measure the capacity of Edge Nodes can be supported by KubeEdge Cloud Part.
 <img src="../images/perf/perf-multi-edgenodes.png">
 
-The simulation of generating virtual KubeEdge Edge Nodes are being analyzed with `Kubemark` framework.
-
 The following deployment types of KubeEdge Edge Nodes can be used for test:
 
 #### Deployment Type 1
@@ -164,6 +162,7 @@ In another VM we run KubeEdge Cloud Part. Dedicated VM for multiple Edge Node pr
 <img src="../images/perf/perf-deploy-type-3.png">
 
 Deploy K8S Master in VM1, KubeEdge Cloud Part in VM2, each KubeEdge Edge Node in dedicated VM.
+The simulation of generating virtual KubeEdge Edge Nodes are being analyzed with `Kubemark` framework.
 
 ### 5. Update Device Twin State from Cloud to Device
 <img src="../images/perf/perf-update-devicetwin.png">
