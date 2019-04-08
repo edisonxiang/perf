@@ -115,15 +115,11 @@ Two kinds of test cases can be adopted: emulators of different devices and actua
 <img src="../images/perf/perf-app-deploy.png">
 
 This scenario is expected to measure the performance of KubeEdge from Cloud to Edge.
+The docker image download latency is not included in this scenario.
+In the following test cases, we need to make sure that docker images have already been in the Edge Node.
 
 Test Cases:
-* Measure the pod startup time with docker images in the Edge Node.
-
-  Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200]`.
-
-  Pods numbers per Edge Node are one of `[1, 2, 5, 10, 20]`.
-
-* Measure the pod startup time without docker images in the Edge Node.
+* Measure the pod startup time.
 
   Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200]`.
 
