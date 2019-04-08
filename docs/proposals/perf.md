@@ -64,6 +64,45 @@ This proposal lists the possible performance test scenarios and test cases for K
 * [Prometheus](https://github.com/prometheus/prometheus)
 * [Grafana](https://github.com/grafana/grafana)
 
+### Test Environment
+
+#### Kubernetes Master
+| Subject                        | Description                                  |
+|--------------------------------|----------------------------------------------|
+| OS                             |  Ubuntu 18.04 server 64bit                   |
+| Kubernetes Version             |  v1.13.5                                     |
+| Docker Version                 |  v17.09                                      |
+| CPU                            |  32vCPUs                                     |
+| RAM                            |  128GB                                       |
+| Disk Type                      |  High I/O                                    |
+| Disk Size                      |  40GB                                        |
+| Count                          |  1                                           |
+This VM is used to run Kubernetes Master Services.
+
+#### KubeEdge Cloud Part
+| Subject                        | Description                                  |
+|--------------------------------|----------------------------------------------|
+| OS                             |  Ubuntu 18.04 server 64bit                   |
+| Docker Version                 |  v17.09                                      |
+| CPU                            |  32vCPUs                                     |
+| RAM                            |  128GB                                       |
+| Disk Type                      |  High I/O                                    |
+| Disk Size                      |  40GB                                        |
+| Count                          |  1                                           |
+This VM is used to run KubeEdge Cloud Part Services.
+
+#### KubeEdge Edge Part Simulation
+| Subject                        | Description                                  |
+|--------------------------------|----------------------------------------------|
+| OS                             |  Ubuntu 18.04 server 64bit                   |
+| Docker Version                 |  v17.09                                      |
+| CPU                            |  32vCPUs                                     |
+| RAM                            |  128GB                                       |
+| Disk Type                      |  High I/O                                    |
+| Disk Size                      |  40GB                                        |
+| Count                          |  1                                           |
+This VM is used to simulate numbers of KubeEdge Edge Nodes.
+
 ## Test Scenarios
 
 ### 1. Edge Nodes join in K8S Cluster
