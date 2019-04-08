@@ -53,17 +53,6 @@ This proposal lists the possible performance test scenarios and test cases for K
 
 ## Proposal
 
-### Test Framework
-<img src="../images/perf/perf-test-framework.png">
-
-### Test Tools
-* [Kubemark](https://github.com/kubernetes/kubernetes/tree/master/test/kubemark)
-* [Fortio](https://github.com/fortio/fortio)
-
-### Metrics Tools
-* [Prometheus](https://github.com/prometheus/prometheus)
-* [Grafana](https://github.com/grafana/grafana)
-
 ### Test Environment
 
 #### Kubernetes Master
@@ -105,6 +94,17 @@ This VM is used to run KubeEdge Cloud Part Services.
 | Count                          |  1                                           |
 
 This VM is used to simulate numbers of KubeEdge Edge Nodes.
+
+### Test Framework
+<img src="../images/perf/perf-test-framework.png">
+
+### Test Tools
+* [Kubemark](https://github.com/kubernetes/kubernetes/tree/master/test/kubemark)
+* [Fortio](https://github.com/fortio/fortio)
+
+### Metrics Tools
+* [Prometheus](https://github.com/prometheus/prometheus)
+* [Grafana](https://github.com/grafana/grafana)
 
 ## Test Scenarios
 
