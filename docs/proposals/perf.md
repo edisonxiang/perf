@@ -78,6 +78,10 @@ Test Cases:
 
   This test case ends with all Edge Nodes are in `Ready` status.
 
+* Measure CPU and Memory Usage of KubeEdge Cloud Part.
+
+  Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200]`.
+
 ### 2. Create Device/Device Model from Cloud
 <img src="../images/perf/perf-create-device.png">
 
@@ -86,6 +90,7 @@ This scenario is expected to measure the northbound API of KubeEdge.
 Test Cases:
 * Measure the latency between K8S Master and KubeEdge Cloud Part.
 * Measure the throughput between K8S Master and KubeEdge Cloud Part.
+* Measure CPU and Memory Usage of KubeEdge Cloud Part.
 
 ### 3. Report Device Status to Edge
 <img src="../images/perf/perf-report-devicestatus.png">
@@ -98,6 +103,10 @@ Test Cases:
   Device numbers per Edge Node are one of `[1, 10, 20, 50, 100, 200]`.
 
 * Measure the throughput between KubeEdge Edge Part and device.
+
+  Device numbers per Edge Node are one of `[1, 10, 20, 50, 100, 200]`.
+
+* Measure CPU and Memory Usage of KubeEdge Edge Part.
 
   Device numbers per Edge Node are one of `[1, 10, 20, 50, 100, 200]`.
 
@@ -126,6 +135,18 @@ Test Cases:
   Pods numbers per Edge Node are one of `[1, 2, 5, 10, 20]`.
 
   This test case ends with all pods are in `Ready` status.
+
+* Measure CPU and Memory Usage of KubeEdge Cloud Part.
+
+  Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200]`.
+
+  Pods numbers per Edge Node are one of `[1, 2, 5, 10, 20]`.
+
+* Measure CPU and Memory Usage of KubeEdge Edge Part.
+
+  Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200]`.
+
+  Pods numbers per Edge Node are one of `[1, 2, 5, 10, 20]`.
 
 As the result of the pod startup time, we can evaluate scalability of KubeEdge Edge Nodes.
 Measure the capacity of Edge Nodes can be supported by KubeEdge Cloud Part.
