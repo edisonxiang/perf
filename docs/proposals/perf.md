@@ -95,11 +95,11 @@ This scenario is expected to measure the southbound API of KubeEdge.
 Test Cases:
 * Measure the latency between KubeEdge Edge Part and device.
 
-  Device numbers are one of `[1, 10, 20, 50, 100, 200]`.
+  Device numbers per Edge Node are one of `[1, 10, 20, 50, 100, 200]`.
 
 * Measure the throughput between KubeEdge Edge Part and device.
 
-  Device numbers are one of `[1, 10, 20, 50, 100, 200]`.
+  Device numbers per Edge Node are one of `[1, 10, 20, 50, 100, 200]`.
 
 As the result of the latency and throughput with different device numbers,
 we can evaluate scalability of devices for KubeEdge Edge Part.
@@ -175,18 +175,18 @@ Test Cases:
 
   Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200]`.
 
-  Device numbers are one of `[1, 10, 20, 50, 100, 200]`.
+  Device numbers per Edge Node are one of `[1, 10, 20, 50, 100, 200]`.
 
 * Measure CPU and Memory Usage of KubeEdge Cloud Part.
 
   Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200]`.
 
-  Device numbers are one of `[1, 10, 20, 50, 100, 200]`.
+  Device numbers per Edge Node are one of `[1, 10, 20, 50, 100, 200]`.
 
 * Measure CPU and Memory Usage of KubeEdge Edge Part.
 
   Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200]`.
 
-  Device numbers are one of `[1, 10, 20, 50, 100, 200]`.
+  Device numbers per Edge Node are one of `[1, 10, 20, 50, 100, 200]`.
 
 These test cases should be run in both system idle and under heavy load.
