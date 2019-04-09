@@ -156,7 +156,7 @@ Test Cases:
 
 As the result of the latency and throughput with different device numbers,
 we can evaluate scalability of devices for KubeEdge Edge Part.
-Measure the capacity of devices can be supported by KubeEdge Edge Part.
+Measure how many devices can be handled per Edge Node.
 <img src="../images/perf/perf-multi-devices.png">
 
 Different protocols are considered to test between KubeEdge Edge Part and devices.
@@ -193,7 +193,9 @@ Test Cases:
   Pods numbers per Edge Node are one of `[1, 2, 5, 10, 20]`.
 
 As the result of the pod startup time, we can evaluate scalability of KubeEdge Edge Nodes.
-Measure the capacity of Edge Nodes can be supported by KubeEdge Cloud Part.
+Measure how many Edge Nodes can be handled by KubeEdge Cloud Part.
+Measure how many pods can be handled per Edge Node.
+
 <img src="../images/perf/perf-multi-edgenodes.png">
 
 The following deployment types of KubeEdge Edge Nodes can be used for test:
