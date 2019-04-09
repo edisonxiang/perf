@@ -63,7 +63,6 @@ This proposal lists the possible performance test scenarios and test cases for K
 | Docker Version                 |  v17.09                                      |
 | CPU                            |  32vCPUs                                     |
 | RAM                            |  128GB                                       |
-| Disk Type                      |  High I/O                                    |
 | Disk Size                      |  40GB                                        |
 | Count                          |  1                                           |
 
@@ -76,7 +75,6 @@ This VM is used to run Kubernetes Master Services.
 | Docker Version                 |  v17.09                                      |
 | CPU                            |  32vCPUs                                     |
 | RAM                            |  128GB                                       |
-| Disk Type                      |  High I/O                                    |
 | Disk Size                      |  40GB                                        |
 | Count                          |  1                                           |
 
@@ -89,7 +87,6 @@ This VM is used to run KubeEdge Cloud Part Services.
 | Docker Version                 |  v17.09                                      |
 | CPU                            |  32vCPUs                                     |
 | RAM                            |  128GB                                       |
-| Disk Type                      |  High I/O                                    |
 | Disk Size                      |  40GB                                        |
 | Count                          |  1                                           |
 
