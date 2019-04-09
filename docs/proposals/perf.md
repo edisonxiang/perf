@@ -125,7 +125,7 @@ Test Cases:
 
   Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200]`.
 
-### 2. Create Device/Device Model from Cloud
+### 2. Create Device from Cloud
 <img src="../images/perf/perf-create-device.png">
 
 This scenario is expected to measure the northbound API of KubeEdge.
