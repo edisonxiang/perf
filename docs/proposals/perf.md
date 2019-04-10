@@ -76,7 +76,7 @@ Test client will do the rest of the setup like building KubeEdge image and push 
 
 <img src="../images/perf/perf-test-framework.png">
 
-Kubeedge performance framework will be designed based on the Gomega and Ginkgo framework. 
+Kubeedge performance framework will be designed based on the **Gomega** and **Ginkgo**. 
 
 The performance test framework mainly consists of different types of tests releated to
 - e2e test
