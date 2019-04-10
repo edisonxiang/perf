@@ -62,7 +62,7 @@ Every running KubeEdge performance setup looks like the following:
 1. A real Kubernetes Cluster that has master and nodes. 
 2. A separate VM where the KubeEdge cloud(edgecontroller) is running
 3. Test Client will Build KubeEdge image and put into the Docker Hub repository.
-4. Test Clinet use the replication controller to deploy kubeedge nodes in pods with replicas
+4. Test Clinet use the deployment controller to deploy kubeedge nodes as pods with replicas.
 
 ### Test Environment
 
