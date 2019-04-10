@@ -54,7 +54,7 @@ This proposal lists the possible performance test scenarios and test cases for K
 
 ## Proposal
 
-###Performance Test Deployment
+### Performance Test Deployment
 <img src="../images/perf/perf-deploy-type.png">
 
 Every running KubeEdge performance setup looks like the following:
@@ -62,13 +62,7 @@ Every running KubeEdge performance setup looks like the following:
 1. A real Kubernetes Cluster that has master and nodes. 
 2. A separate VM where the KubeEdge cloud(edgecontroller) is running
 3. Test Client will Build KubeEdge image and put into the Docker Hub repository.
-4. Test Clinet 
-3. The Kubeedge node will run as a pods in the k8s nodes.
-4. 
-
-
-
-
+4. Test Clinet use the replication controller to deploy kubeedge nodes in pods with replicas
 
 ### Test Environment
 
