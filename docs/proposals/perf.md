@@ -1,8 +1,7 @@
 ---
 title: Performance Test Proposal
 authors:
-    - "@edisonxiang"
-    - "@samy2019"
+    - "@edisonxiang"    
     - "@pavan187"
 approvers:
   - "@qizha"
@@ -92,6 +91,40 @@ Also user can also provide the specific tests to run as a command line input to 
 Performance framework also has the support of a command line interface with plenty of handy command line arguments for running your tests and generating test files. Here are a few choice examples:
 
     - Ex:   perf.test -focus="Loadtest" and perf.test -skip="e2e_tests" 
+
+#### Test Framework Features
+
+- A comprehensive test runner
+- Built-in support for testing asynchronicity
+- Modular and easy to customize.
+- Logging and Reporting.
+- Scalable to add more features.
+- Built-in support of command line interface.
+    
+#### Sample E2E Test
+
+```
+It("E2E_Test_1: Create deployment and check the pods are coming up correctly", func() {
+			var deploymentList v1.DeploymentList
+			var podlist metav1.PodList
+			replica := 1
+			//Generate the random string and assign as a UID
+			UID = "deployment-app-" + utils.GetRandomString(5)
+			IsAppDeployed := utils.HandleDeployment(http.MethodPost, ctx.Cfg.ApiServer+DeploymentHandler, UID, ctx.Cfg.AppImageUrl[1], nodeSelector, replica)
+			Expect(IsAppDeployed).Should(BeTrue())
+			err := utils.GetDeployments(&deploymentList, ctx.Cfg.ApiServer+DeploymentHandler)
+			Expect(err).To(BeNil())
+			for _, deployment := range deploymentList.Items {
+				if deployment.Name == UID {
+					label := nodeName
+					podlist, err = utils.GetPods(ctx.Cfg.ApiServer+AppHandler, label)
+					Expect(err).To(BeNil())
+					break
+				}
+			}
+			utils.CheckPodRunningState(ctx.Cfg.ApiServer+AppHandler, podlist)
+		})
+```
 
 #### K8S Master
 | Subject                        | Description                                  |
