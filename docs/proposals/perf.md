@@ -22,11 +22,10 @@ status: Alpha
     * [Goals](#goals)
     * [Non\-goals](#non-goals)
   * [Proposal](#proposal)
-    * [Test Deployment Type](#test-deployment-type)
-    * [Test Environment](#test-environment)
-    * [Test Framework](#test-framework)
-    * [Metrics Tools](#metrics-tools)
-  * [Test Scenarios](#test-Scenarios)
+    * [Performance Test Deployment](#performance-test-deployment)
+    * [Performance Test Framework](#performance-test-framework)
+    * [Performance Test Metrics Tools](#performance-test-metrics-tools)
+    * [Performance Test Scenarios](#performance-test-scenarios)
 
 ## Motivation
 
@@ -57,16 +56,14 @@ This proposal lists the possible performance test scenarios and test cases for K
 ### Performance Test Deployment
 <img src="../images/perf/perf-deploy-type.png">
 
-Every running KubeEdge performance setup looks like the following:
+Every running KubeEdge Performance Test setup looks like the following:
 
-1. A real Kubernetes Cluster that has master and nodes. 
-2. A separate VM where the KubeEdge cloud(edgecontroller) is running
-3. Test Client(E2E) will Build KubeEdge image and put into the Docker Hub repository.
-4. Test Clinet use the deployment controller to deploy kubeedge nodes as pods with replicas.
+1. A real K8S Cluster that has master and nodes.
+2. A separated VM where the KubeEdge Cloud Part Services are running, including Edge Controller and Cloud Hub and so on.
+3. Test Client(E2E) will build KubeEdge EdgeNode image and put into the Docker Hub repository.
+4. Test Client(E2E) uses the deployment controller to deploy KubeEdge EdgeNodes as pods with replicas.
 
-When using the KubeEdge performance tests, the developer is responsible for creating #1 and #2. 
-
-### Test Environment
+When using the KubeEdge Performance Test, the developer is responsible for creating #1 and #2 above.
 
 #### K8S Master
 | Subject                        | Description                                  |
@@ -93,7 +90,7 @@ This VM is used to run K8S Master Services including K8S API Server and K8S Sche
 
 This VM is used to run KubeEdge Cloud Part Services including Edge Controller and Cloud Hub and so on.
 
-#### KubeEdge Edge Part Simulation
+#### K8S Nodes
 | Subject                        | Description                                  |
 |--------------------------------|----------------------------------------------|
 | OS                             |  Ubuntu 18.04 server 64bit                   |
@@ -101,20 +98,21 @@ This VM is used to run KubeEdge Cloud Part Services including Edge Controller an
 | CPU                            |  32vCPUs                                     |
 | RAM                            |  128GB                                       |
 | Disk Size                      |  40GB                                        |
-| Count                          |  1                                           |
+| Count                          |  1...N                                       |
 
-This VM is used to simulate numbers of KubeEdge Edge Nodes which are running Edged and EdgeHub and so on.
+These VMs are used to deploy numbers of KubeEdge Edge Nodes pods which are running Edged and EdgeHub and so on.
+We will adjust the Count of VMs based on the KubeEdge Edge Nodes numbers.
 
-### Test Framework
+### Performance Test Framework
 <img src="../images/perf/perf-test-framework.png">
 
-### Metrics Tools
+### Performance Test Metrics Tools
 * [Prometheus](https://github.com/prometheus/prometheus)
 * [Grafana](https://github.com/grafana/grafana)
 
-## Test Scenarios
+### Performance Test Scenarios
 
-### 1. Edge Nodes join in K8S Cluster
+#### 1. Edge Nodes join in K8S Cluster
 <img src="../images/perf/perf-edgenodes-join-cluster.png">
 
 Test Cases:
@@ -134,7 +132,7 @@ Test Cases:
 
   Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200]`.
 
-### 2. Create Devices from Cloud
+#### 2. Create Devices from Cloud
 <img src="../images/perf/perf-create-device.png">
 
 This scenario is expected to measure the northbound API of KubeEdge.
@@ -144,7 +142,7 @@ Test Cases:
 * Measure the throughput between K8S Master and KubeEdge Cloud Part.
 * Measure CPU and Memory Usage of KubeEdge Cloud Part.
 
-### 3. Report Device Status to Edge
+#### 3. Report Device Status to Edge
 <img src="../images/perf/perf-report-devicestatus.png">
 
 This scenario is expected to measure the southbound API of KubeEdge.
@@ -172,7 +170,7 @@ E.g. Bluetooth, MQTT, ZigBee, BACnet and Modbus and so on.
 Currenly less than 20ms latency can be accepted in Edge IoT scenario.
 Two kinds of test cases can be adopted: emulators of different devices and actual devices.
 
-### 4. Application Deployment from Cloud to Edge
+#### 4. Application Deployment from Cloud to Edge
 <img src="../images/perf/perf-app-deploy.png">
 
 This scenario is expected to measure the performance of KubeEdge from Cloud to Edge.
@@ -206,7 +204,7 @@ Measure how many pods can be handled per Edge Node.
 
 <img src="../images/perf/perf-multi-edgenodes.png">
 
-### 5. Update Device Twin State from Cloud to Device
+#### 5. Update Device Twin State from Cloud to Device
 <img src="../images/perf/perf-update-devicetwin.png">
 
 This scenario is expected to measure the E2E performance of KubeEdge.
