@@ -61,18 +61,18 @@ Deploy K8S Master in VM1, KubeEdge Cloud Part in VM2, and simulate all virtual K
 
 ### Test Environment
 
-#### Kubernetes Master
+#### K8S Master
 | Subject                        | Description                                  |
 |--------------------------------|----------------------------------------------|
 | OS                             |  Ubuntu 18.04 server 64bit                   |
-| Kubernetes Version             |  v1.13.5                                     |
+| K8S Version                    |  v1.13.5                                     |
 | Docker Version                 |  v17.09                                      |
 | CPU                            |  32vCPUs                                     |
 | RAM                            |  128GB                                       |
 | Disk Size                      |  40GB                                        |
 | Count                          |  1                                           |
 
-This VM is used to run Kubernetes Master Services.
+This VM is used to run K8S Master Services including K8S API Server and K8S Scheduler and so on.
 
 #### KubeEdge Cloud Part
 | Subject                        | Description                                  |
@@ -84,7 +84,7 @@ This VM is used to run Kubernetes Master Services.
 | Disk Size                      |  40GB                                        |
 | Count                          |  1                                           |
 
-This VM is used to run KubeEdge Cloud Part Services.
+This VM is used to run KubeEdge Cloud Part Services including Edge Controller and Cloud Hub and so on.
 
 #### KubeEdge Edge Part Simulation
 | Subject                        | Description                                  |
@@ -96,7 +96,7 @@ This VM is used to run KubeEdge Cloud Part Services.
 | Disk Size                      |  40GB                                        |
 | Count                          |  1                                           |
 
-This VM is used to simulate numbers of KubeEdge Edge Nodes.
+This VM is used to simulate numbers of KubeEdge Edge Nodes which are running Edged and EdgeHub and so on.
 
 ### Test Framework
 <img src="../images/perf/perf-test-framework.png">
