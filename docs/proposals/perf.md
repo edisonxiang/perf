@@ -71,9 +71,7 @@ Every running KubeEdge Performance Test setup looks like the following:
 
 When using the KubeEdge Performance Test, the developer is responsible for creating #1 and #2 above.
 
-Test client will do the rest of the setup like building KubeEdge image and push the image to docker repository. 
-
-Once the image is pushed sucessfully, test client use the deployment object to deploy KubeEdge nodes as pods and wait until all the pods comes up and **Running**.
+Test client will do the rest of the setup like building KubeEdge image and push the image to docker repository. Once the image is pushed sucessfully, test client use the deployment object to deploy KubeEdge nodes as pods and wait until all the pods comes up and **Running**.
 
 ### Performance Test Framework
 
