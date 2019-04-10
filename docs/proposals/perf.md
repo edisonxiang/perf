@@ -56,6 +56,10 @@ This proposal lists the possible performance test scenarios and test cases for K
 ### Performance Test Deployment
 <img src="../images/perf/perf-deploy-type.png">
 
+## Requirements
+
+To run KubeEdge performance you need a Kubernetes cluster for running all your KubeEdge Nodes and a dedicated machine for a KubeEdge Edge Controller and Cloud hub. KubeEdge Cloud machine has to be directly routable from KubeEdge Nodes. You also need an access to some Docker repository.
+
 Every running KubeEdge Performance Test setup looks like the following:
 
 1. A real K8S Cluster that has master and nodes.
@@ -64,7 +68,7 @@ Every running KubeEdge Performance Test setup looks like the following:
 4. Test Client(E2E) uses the deployment controller to deploy KubeEdge EdgeNodes as pods with replicas.
 
 When using the KubeEdge Performance Test, the developer is responsible for creating #1 and #2 above.
-Test client will do the rest of the setup like building the image and push the image to docker repository. Once the image is pushed sucessfully, test client use the deployment object to deploy KubeEdge nodes in pods and wait until all the pods comes up and **Running**.
+Test client will do the rest of the setup like building the image and push the image to docker repository. Once the image is pushed sucessfully, test client use the deployment object to deploy KubeEdge nodes as pods and wait until all the pods comes up and **Running**.
 
 
 #### K8S Master
