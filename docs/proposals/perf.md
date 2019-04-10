@@ -56,11 +56,12 @@ This proposal lists the possible performance test scenarios and test cases for K
 ### Performance Test Deployment
 <img src="../images/perf/perf-deploy-type.png">
 
-## Requirement
+### Requirement
 
 To run KubeEdge performance you need a Kubernetes cluster for running all your KubeEdge Nodes and a dedicated machine for a KubeEdge Edge Controller and Cloud hub. KubeEdge Cloud machine has to be directly routable from KubeEdge Nodes. You also need an access to some Docker repository.
 
-## KubeEdge Perfromance Setup
+### KubeEdge Deployment Setup for Performance
+
 Every running KubeEdge Performance Test setup looks like the following:
 
 1. A real K8S Cluster that has master and nodes.
@@ -69,8 +70,28 @@ Every running KubeEdge Performance Test setup looks like the following:
 4. Test Client(E2E) uses the deployment controller to deploy KubeEdge EdgeNodes as pods with replicas.
 
 When using the KubeEdge Performance Test, the developer is responsible for creating #1 and #2 above.
-Test client will do the rest of the setup like building KubeEdge image and push the image to docker repository. Once the image is pushed sucessfully, test client use the deployment object to deploy KubeEdge nodes as pods and wait until all the pods comes up and **Running**.
 
+Test client will do the rest of the setup like building KubeEdge image and push the image to docker repository. 
+
+Once the image is pushed sucessfully, test client use the deployment object to deploy KubeEdge nodes as pods and wait until all the pods comes up and **Running**.
+
+### Performance Test Framework
+
+<img src="../images/perf/perf-test-framework.png">
+
+Kubeedge performance framework will be designed based on the Gomega and Ginkgo framework. 
+
+The performance test framework mainly consists of different types of tests releated to
+- e2e test
+- Scalability tests
+- Latency tests
+- Load test
+- Common util
+
+By default Performance framework will run the all tests when run the test/e2e/execute.sh script.
+Also user can also provide the specific tests to run as a command line input to the **execute.sh** script.Performance framework also has the support of a command line interface with plenty of handy command line arguments for running your tests and generating test files. Here are a few choice examples:
+
+    - Ex:   perf.test -focus="Loadtest" and perf.test -skip="e2e_tests" 
 
 #### K8S Master
 | Subject                        | Description                                  |
@@ -109,9 +130,6 @@ This VM is used to run KubeEdge Cloud Part Services including Edge Controller an
 
 These VMs are used to deploy numbers of KubeEdge Edge Nodes pods which are running Edged and EdgeHub and so on.
 We will adjust the Count of VMs based on the KubeEdge Edge Nodes numbers.
-
-### Performance Test Framework
-<img src="../images/perf/perf-test-framework.png">
 
 ### Performance Test Metrics Tools
 * [Prometheus](https://github.com/prometheus/prometheus)
