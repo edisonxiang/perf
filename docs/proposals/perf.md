@@ -60,6 +60,7 @@ This proposal lists the possible performance test scenarios and test cases for K
 
 To run KubeEdge performance you need a Kubernetes cluster for running all your KubeEdge Nodes and a dedicated machine for a KubeEdge Edge Controller and Cloud hub. KubeEdge Cloud machine has to be directly routable from KubeEdge Nodes. You also need an access to some Docker repository.
 
+## Starting a Kubemark cluster
 Every running KubeEdge Performance Test setup looks like the following:
 
 1. A real K8S Cluster that has master and nodes.
