@@ -54,10 +54,21 @@ This proposal lists the possible performance test scenarios and test cases for K
 
 ## Proposal
 
-### Test Deployment Type
+###Performance Test Deployment
 <img src="../images/perf/perf-deploy-type.png">
 
-Deploy K8S Master in VM1, KubeEdge Cloud Part in VM2, and simulate all virtual KubeEdge Edge Nodes in VM3.
+Every running KubeEdge performance setup looks like the following:
+
+1. A real Kubernetes Cluster that has master and nodes. 
+2. A separate VM where the KubeEdge cloud(edgecontroller) is running
+3. Test Client will Build KubeEdge image and put into the Docker Hub repository.
+4. Test Clinet 
+3. The Kubeedge node will run as a pods in the k8s nodes.
+4. 
+
+
+
+
 
 ### Test Environment
 
