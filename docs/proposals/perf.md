@@ -25,7 +25,6 @@ status: Alpha
     * [Test Deployment Type](#test-deployment-type)
     * [Test Environment](#test-environment)
     * [Test Framework](#test-framework)
-    * [Test Tools](#test-tools)
     * [Metrics Tools](#metrics-tools)
   * [Test Scenarios](#test-Scenarios)
 
@@ -101,10 +100,6 @@ This VM is used to simulate numbers of KubeEdge Edge Nodes.
 
 ### Test Framework
 <img src="../images/perf/perf-test-framework.png">
-
-### Test Tools
-* [Kubemark](https://github.com/kubernetes/kubernetes/tree/master/test/kubemark)
-* [Fortio](https://github.com/fortio/fortio)
 
 ### Metrics Tools
 * [Prometheus](https://github.com/prometheus/prometheus)
