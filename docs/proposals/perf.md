@@ -108,6 +108,21 @@ This VM is used to run KubeEdge Cloud Part Services including Edge Controller an
 These VMs are used to deploy numbers of KubeEdge Edge Nodes pods which are running Edged and EdgeHub and so on.
 We will adjust the Count of VMs based on the KubeEdge Edge Nodes numbers.
 
+##### KubeEdge node depoyment details with the above reference configuration:
+
+KubeEdge performance setup is similar to kubemark(k8s) setup, where they simulate no.of hollow-nodes in pods and deploy on k8s cluster. 
+In KubeEdge also we do the similar kind of simulation for creating KubeEdge node in pods and deploy the pods through deploment object.
+
+In the above K8s node config the vCPU and RAM memory are 32vCPU 128GB RAM respectively.
+
+Our Pod simulation resource mount look like below:
+- 1-POD : 0.10vCPU 250MB memory
+
+With KubeEdge pod deployment we can accomodate the 10 pods/1vCPU approximately.
+
+As per the K8s Node conf, ideally we should be able to deploy 320 Pods(KubeEdge nodes)/32vCPU and Memory consumption woulb be around 80GB.
+As we are planning to have, 5 K8s nodes excluding K8s master in a cluster with the similar conf, on a whole we should be able to deploy 1500 pods(KubeEdge nodes)/5 k8s nodes.
+
 ### Performance Test Framework
 <img src="../images/perf/perf-test-framework.png">
 
