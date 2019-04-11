@@ -111,7 +111,7 @@ We will adjust the Count of VMs based on the KubeEdge Edge Nodes numbers.
 KubeEdge Performance Test setup is similar with K8S KubeMark setup,
 where they simulate numbers of hollow-nodes in pods and deploy on K8S Cluster.
 In KubeEdge we also do the similar kind of simulation for creating KubeEdge Edge Nodes
-in pods and deploy the pods through deployment. Our Pod takes up resources as below:
+in pods and deploy the pods through deployment. Our pod takes up resources as below:
 - 1 pod : 0.10 vCPU & 250MB RAM
 
 With KubeEdge pod deployment we can accomodate 10 pods/1vCPU approximately.
