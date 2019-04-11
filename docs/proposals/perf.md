@@ -55,15 +55,6 @@ This proposal lists the possible performance test scenarios and test cases for K
 ### Performance Test Deployment
 <img src="../images/perf/perf-deploy-type.png">
 
-### Requirement
-
-To run KubeEdge performance you need a Kubernetes cluster for running all your KubeEdge Nodes
-and a dedicated machine for a KubeEdge Edge Controller and Cloud hub.
-KubeEdge Cloud machine has to be directly routable from KubeEdge Nodes.
-You also need an access to some Docker repository.
-
-### KubeEdge Deployment Setup for Performance
-
 Every running KubeEdge Performance Test setup looks like the following:
 
 1. A real K8S Cluster that has master and nodes.
@@ -73,9 +64,9 @@ Every running KubeEdge Performance Test setup looks like the following:
 
 When using the KubeEdge Performance Test, the developer is responsible for creating #1 and #2 above.
 
-Test client will do the rest of the setup like building KubeEdge image and push the image to docker repository.
-Once the image is pushed sucessfully, test client use the deployment object to deploy KubeEdge nodes as pods
-and wait until all the pods comes up and **Running**.
+Test Client will do the rest of the setup like building KubeEdge EdgeNode image and push the image to Docker repository.
+Once the image is pushed sucessfully, Test Client uses the deployment object to deploy KubeEdge Nodes as pods
+and waits until all the pods come up and **Running**.
 
 #### K8S Master
 | Subject                        | Description                                  |
@@ -119,33 +110,16 @@ We will adjust the Count of VMs based on the KubeEdge Edge Nodes numbers.
 
 <img src="../images/perf/perf-test-framework.png">
 
-KubeEdge performance framework will be designed based on the **Gomega** and **Ginkgo**. 
+KubeEdge Performance Test Framework will be designed based on the **Gomega** and **Ginkgo**.
 
-The performance test framework mainly consists of different types of tests releated to
-- E2E test
-- Scalability tests
-- Latency tests
-- Load test
-- Common util
+The Performance Test Framework mainly relates to Utils Library and different types of tests:
+- E2E Test
+- Latency Test
+- Load Test
+- Scalability Test
+- ...
 
-By default Performance framework will run all tests when user runs the **performace.sh** script.
-Also user can also provide the specific tests to run as a command line input to the **performace.sh** script.
-
-Performance framework also has the support of a command line interface with plenty of handy command line arguments
-for running your tests and generating test files. Here are a few choice examples:
-
-    - Ex:   perf.test -focus="Loadtest" and perf.test -skip="Scalability_tests"
-
-#### Test Framework Features
-
-- A comprehensive test runner.
-- Built-in support for testing asynchronicity.
-- Modular and easy to customize.
-- Logging and Reporting.
-- Scalable to add more features.
-- Built-in support of command line interface.
-
-#### Sample E2E Test
+Sample E2E Test:
 
 ```
 It("E2E_Test_1: Create deployment and check the pods are coming up correctly", func() {
@@ -169,6 +143,24 @@ It("E2E_Test_1: Create deployment and check the pods are coming up correctly", f
 			utils.CheckPodRunningState(ctx.Cfg.ApiServer+AppHandler, podlist)
 		})
 ```
+
+By default Performance Test Framework will run all tests when the users run the **perf.sh** script.
+Also the users can also provide the specific tests to run as a command line input to the **perf.sh** script.
+
+Performance Test Framework also has the support of a command line interface with plenty of handy command line arguments
+for running your tests and generating test files. Here is a choice example:
+
+    - Ex:   perf.test -focus="LoadTest" and perf.test -skip="ScalabilityTest"
+
+Performance Test Framework features include:
+
+- A comprehensive test runner.
+- Built-in support for testing asynchronicity.
+- Modular and easy to customize.
+- Logging and Reporting.
+- Scalable to add more features.
+- Built-in support of command line interface.
+- ...
 
 ### Performance Test Metrics Tools
 * [Prometheus](https://github.com/prometheus/prometheus)
