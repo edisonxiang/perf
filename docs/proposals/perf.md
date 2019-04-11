@@ -107,7 +107,6 @@ These VMs are used to deploy numbers of KubeEdge Edge Nodes pods which are runni
 We will adjust the Count of VMs based on the KubeEdge Edge Nodes numbers.
 
 ### Performance Test Framework
-
 <img src="../images/perf/perf-test-framework.png">
 
 KubeEdge Performance Test Framework will be designed based on the **Gomega** and **Ginkgo**.
