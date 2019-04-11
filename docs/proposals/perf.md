@@ -55,6 +55,8 @@ This proposal lists the possible performance test scenarios and test cases for K
 ### Performance Test Deployment
 <img src="../images/perf/perf-deploy-type.png">
 
+
+
 Every running KubeEdge Performance Test setup looks like the following:
 
 1. A real K8S Cluster that has master and nodes.
@@ -118,7 +120,7 @@ The Performance Test Framework mainly relates to Utils Library and different typ
 - Scalability Test
 - ...
 
-Sample E2E Test:
+E2E Test Sample:
 
 ```
 It("E2E_Test_1: Create deployment and check the pods are coming up correctly", func() {
