@@ -85,7 +85,7 @@ The performance test framework mainly consists of different types of tests relea
 - Load test
 - Common util
 
-By default Performance framework will run all tests when user run the test/e2e/execute.sh script.
+By default Performance framework will run all tests when user runs the test/e2e/execute.sh script.
 Also user can also provide the specific tests to run as a command line input to the **execute.sh** script.
 
 Performance framework also has the support of a command line interface with plenty of handy command line arguments for running your tests and generating test files. Here are a few choice examples:
