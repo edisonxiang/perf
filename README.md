@@ -11,4 +11,4 @@
 * Performance Framework developement (Owner: @pavan187) (Status: In Progress)
 * Implementation of identified performance scenario's SLO - Pod Startup time (Owner: @pavan187) (Status: In Progress)
 * load test for SLO - Pod Startup time Benchmark (Owner: @pavan187) (Status: To be started, Planned to finish by 26/04/2019)
-* Mock Edged (Owner: ) (Status: )
+* Mock Edged (Owner: @edisonxiang) (Status: To be started)
