@@ -3,8 +3,10 @@
 ## Work Items
 * Add KubeEdge Edge Deployment (Owner: @edisonxiang) (Status: In Progress)
 * Verification of successfull application deployment on KubeEdge (Owner: @edisonxiang) (Status: In Progress)
+
   https://github.com/kubeedge/kubeedge/pull/367
 * Clean files After E2E Test (Owner: @edisonxiang) (Status: In Progress)
+
   https://github.com/kubeedge/kubeedge/pull/364
 * Performace Env setup on GCP  (Owner: @pavan187) (Status: In Progress)
 * Performance Framework developement (Owner: @pavan187) (Status: In Progress)
