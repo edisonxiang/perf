@@ -14,8 +14,8 @@
 
   https://github.com/kubeedge/kubeedge/pull/364
   
- * Add Scalability Thresholds (Owner: @edisonxiang) (Status: Done)
-
+* Add Scalability Thresholds (Owner: @edisonxiang) (Status: Done)
+ 
   https://github.com/kubeedge/kubeedge/pull/308
   
 * Performace Env setup on GCP  (Owner: @pavan187) (Status: In Progress)
