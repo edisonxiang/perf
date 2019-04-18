@@ -10,8 +10,8 @@ approvers:
   - "@Baoqiang-Zhang"
   - "@m1093782566"
 creation-date: 2019-03-28
-last-updated: 2019-04-10
-status: Alpha
+last-updated: 2019-04-18
+status: Pending
 ---
 
 # Performance Test Proposal
@@ -25,6 +25,7 @@ status: Alpha
     * [Performance Test Framework](#performance-test-framework)
     * [Performance Test Metrics Tools](#performance-test-metrics-tools)
     * [Performance Test Scenarios](#performance-test-scenarios)
+  * [Thresholds](#thresholds)
 
 ## Motivation
 
@@ -54,8 +55,6 @@ This proposal lists the possible performance test scenarios and test cases for K
 
 ### Performance Test Deployment
 <img src="../images/perf/perf-deploy-type.png">
-
-
 
 Every running KubeEdge Performance Test setup looks like the following:
 
@@ -189,17 +188,17 @@ Test Cases:
 
   Different numbers of Edge Nodes need be tested.
 
-  Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200]`.
+  Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200...]`.
 
   This test case ends with all Edge Nodes are in `Ready` status.
 
 * Measure CPU and Memory Usage of KubeEdge Cloud Part.
 
-  Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200]`.
+  Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200...]`.
 
 * Measure CPU and Memory Usage of KubeEdge Edge Part.
 
-  Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200]`.
+  Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200...]`.
 
 #### 2. Create Devices from Cloud
 <img src="../images/perf/perf-create-device.png">
@@ -219,15 +218,15 @@ This scenario is expected to measure the southbound API of KubeEdge.
 Test Cases:
 * Measure the latency between KubeEdge Edge Part and device.
 
-  Device numbers per Edge Node are one of `[1, 10, 20, 50, 100, 200]`.
+  Device numbers per Edge Node are one of `[1, 10, 20, 50, 100, 200...]`.
 
 * Measure the throughput between KubeEdge Edge Part and device.
 
-  Device numbers per Edge Node are one of `[1, 10, 20, 50, 100, 200]`.
+  Device numbers per Edge Node are one of `[1, 10, 20, 50, 100, 200...]`.
 
 * Measure CPU and Memory Usage of KubeEdge Edge Part.
 
-  Device numbers per Edge Node are one of `[1, 10, 20, 50, 100, 200]`.
+  Device numbers per Edge Node are one of `[1, 10, 20, 50, 100, 200...]`.
 
 As the result of the latency and throughput with different device numbers,
 we can evaluate scalability of devices for KubeEdge Edge Part.
@@ -249,23 +248,23 @@ In the following test cases, we need to make sure that docker images have alread
 Test Cases:
 * Measure the pod startup time.
 
-  Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200]`.
+  Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200...]`.
 
-  Pods numbers per Edge Node are one of `[1, 2, 5, 10, 20]`.
+  Pods numbers per Edge Node are one of `[1, 2, 5, 10, 20...]`.
 
   This test case ends with all pods are in `Ready` status.
 
 * Measure CPU and Memory Usage of KubeEdge Cloud Part.
 
-  Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200]`.
+  Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200...]`.
 
-  Pods numbers per Edge Node are one of `[1, 2, 5, 10, 20]`.
+  Pods numbers per Edge Node are one of `[1, 2, 5, 10, 20...]`.
 
 * Measure CPU and Memory Usage of KubeEdge Edge Part.
 
-  Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200]`.
+  Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200...]`.
 
-  Pods numbers per Edge Node are one of `[1, 2, 5, 10, 20]`.
+  Pods numbers per Edge Node are one of `[1, 2, 5, 10, 20...]`.
 
 As the result of the pod startup time, we can evaluate scalability of KubeEdge Edge Nodes.
 Measure how many Edge Nodes can be handled by KubeEdge Cloud Part.
@@ -281,20 +280,52 @@ This scenario is expected to measure the E2E performance of KubeEdge.
 Test Cases:
 * Measure E2E latency.
 
-  Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200]`.
+  Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200...]`.
 
-  Device numbers per Edge Node are one of `[1, 10, 20, 50, 100, 200]`.
+  Device numbers per Edge Node are one of `[1, 10, 20, 50, 100, 200...]`.
 
 * Measure CPU and Memory Usage of KubeEdge Cloud Part.
 
-  Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200]`.
+  Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200...]`.
 
-  Device numbers per Edge Node are one of `[1, 10, 20, 50, 100, 200]`.
+  Device numbers per Edge Node are one of `[1, 10, 20, 50, 100, 200...]`.
 
 * Measure CPU and Memory Usage of KubeEdge Edge Part.
 
-  Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200]`.
+  Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200...]`.
 
-  Device numbers per Edge Node are one of `[1, 10, 20, 50, 100, 200]`.
+  Device numbers per Edge Node are one of `[1, 10, 20, 50, 100, 200...]`.
 
 These test cases should be run in both system idle and under heavy load.
+
+## Thresholds
+
+As the result of Performance Test, we expect to determine the performance and scalability for KubeEdge.
+This is critical to make some improvement items for KubeEdge.
+On the other hand, it will give the users recommended setup and user guides on KubeEdge.
+
+As [the k8s document](https://github.com/kubernetes/community/blob/master/sig-scalability/configs-and-limits/thresholds.md) mentions,
+since 1.6 release K8S can support 5000 Nodes and 150000 Pods in single cluster.
+KubeEdge is based on K8S Master, the difference between K8S Nodes and KubeEdge Edge Nodes
+is that KubeEdge Edge Nodes are not directly connected with the K8S Master like the K8S Nodes do.
+The KubeEdge Cloud Part connects K8S Master with KubeEdge Edge Nodes.
+Certainly the KubeEdge Edge Nodes are light weight and making use of less resources like CPU, Memory.
+
+Currently about KubeEdge we have no performance data which can make comparison with the other systems.
+But we can measure the performance and scalability for KubeEdge by the Performance Test data.
+We can get the original test data from KubeEdge 0.3 release, and also make Performance Test for the follow up releases.
+We defines the following thresholds which will be based on the Performance Test data for KubeEdge.
+In most cases, exceeding these thresholds do not mean KubeEdge fails over,
+it just means its overall performance degrades.
+
+| Quantity                            | 0.3 Release    | 1.0 Release | Long Term Goal |
+|-------------------------------------|----------------|-------------|----------------|
+| Edge Nodes numbers                  |                |             |                |
+| Pods numbers                        |                |             |                |
+| Pods numbers per Edge Node          |                |             |                |
+| Device numbers                      |                |             |                |
+| Device numbers per Edge Node        |                |             |                |
+
+The KubeEdge Performance Test Cases will exceed 5000 Edge Nodes and 150000 Pods,
+so that we can make comparison with K8S Cluster.
+The form will be filled with the first round of Performance Test data.
