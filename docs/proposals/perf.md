@@ -304,7 +304,7 @@ As the result of Performance Test, we expect to determine the performance and sc
 This is critical to make some improvement items for KubeEdge.
 On the other hand, it will give the users recommended setup and user guides on KubeEdge.
 
-As [the k8s document](https://github.com/kubernetes/community/blob/master/sig-scalability/configs-and-limits/thresholds.md) mentions,
+As [this K8S document](https://github.com/kubernetes/community/blob/master/sig-scalability/configs-and-limits/thresholds.md) mentions,
 since 1.6 release K8S can support 5000 Nodes and 150000 Pods in single cluster.
 KubeEdge is based on K8S Master, the difference between K8S Nodes and KubeEdge Edge Nodes
 is that KubeEdge Edge Nodes are not directly connected with the K8S Master like the K8S Nodes do.
