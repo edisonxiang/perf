@@ -298,6 +298,29 @@ Test Cases:
 
 These test cases should be run in both system idle and under heavy load.
 
+#### 6. Add Pod from CloudHub to EdgeHub
+<img src="../images/perf/perf-cloudhub-edgehub.png">
+
+This scenario is expected to measure the performance of KubeEdge between CloudHub to EdgeHub.
+Actually this is not an E2E Test scenario for KubeEdge,
+but the message delivery channel between CloudHub to EdgeHub may be our bottleneck.
+Currently we are using web socket as the communication protocal between Cloud and Edge.
+In the following test cases, we need to mock the behaviors of CloudHub and EdgeHub,
+and the simulation messages of adding pod will be sent to EdgeHub,
+and the simulation messages of pod status will be sent back to CloudHub.
+so that we can get the exact latency and throughput between CloudHub and EdgeHub.
+
+Test Cases:
+* Measure the latency between KubeEdge CloudHub and KubeEdge EdgeHub.
+
+  Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200...]`.
+
+* Measure the throughput between KubeEdge CloudHub and KubeEdge EdgeHub.
+
+  Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200...]`.
+
+As the result of the latency and throughput, we can evaluate scalability of KubeEdge EdgeHubs also the same with KubeEdge Edge Nodes.
+
 ## Thresholds
 
 As the result of Performance Test, we expect to determine the performance and scalability for KubeEdge.
