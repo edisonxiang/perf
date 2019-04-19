@@ -314,7 +314,7 @@ Certainly the KubeEdge Edge Nodes are light weight and making use of less resour
 Currently about KubeEdge we have no performance data which can make comparison with the other systems.
 But we can measure the performance and scalability for KubeEdge by the Performance Test data.
 We can get the original test data from KubeEdge 0.3 release, and also make Performance Test for the follow up releases.
-We defines the following thresholds which will be based on the Performance Test data for KubeEdge.
+We define the following thresholds which will be based on the Performance Test data for KubeEdge.
 In most cases, exceeding these thresholds do not mean KubeEdge fails over,
 it just means its overall performance degrades.
 
