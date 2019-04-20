@@ -319,6 +319,16 @@ Test Cases:
 
   Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200...]`.
 
+* Measure CPU and Memory Usage of KubeEdge Cloud Part.
+
+  Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200...]`.
+
+  Device numbers per Edge Node are one of `[1, 10, 20, 50, 100, 200...]`.
+
+* Measure CPU and Memory Usage of KubeEdge Edge Part.
+
+  Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200...]`.
+
 As the result of the latency and throughput, we can evaluate scalability of KubeEdge EdgeHubs also the same with KubeEdge Edge Nodes.
 
 ## Thresholds
