@@ -69,7 +69,7 @@ Before runing the KubeEdge Performance Test, the developer is responsible for cr
 Test Client uses the deployment object to deploy KubeEdge Cloud Part pod and KubeEdge Edge Node pods,
 and waits until all the pods come up and **Running**.
 The KubeEdge Cloud Part pod will be running in the independent VM as **VM3** shown in the above figure.
-The KubeEdge Edge Node pods will be running the other K8S Nodes.
+The KubeEdge Edge Node pods will be running in the other K8S Nodes.
 Once the KubeEdge Cloud Part and KubeEdge Edge Nodes are running,
 KubeEdge Cloud Part will try to connect with K8S Master as **VM4** shown in the above figure,
 and KubeEdge Edge Nodes will try to connect with KubeEdge Cloud Part.
