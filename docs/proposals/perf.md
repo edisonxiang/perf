@@ -31,7 +31,7 @@ status: Pending
 
 Currently KubeEdge test is focused on automated test suites for unit, integration and E2E test and validation.
 KubeEdge allows the users to manage large scale of edge nodes, devices from cloud.
-A set of test specifically performance test can be used to determine the non-functional
+A set of tests specifically performance tests can be used to determine the non-functional
 characteristics of KubeEdge such as latency, throughput, cpu usage, memory usage and so on.
 As a result, we can also evaluate the future improvement items for KubeEdge.
 
@@ -42,14 +42,14 @@ This proposal lists the possible performance test scenarios and test cases for K
 * Benchmark the performance against the following Service Level Objectives:
   * Latency: time cost from the moment when the server gets the request to last byte of response sent to the users.
   * Throughput: measure how many requests can be served within given time.
-  * Scalability: potential scaling capacity under different load conditions.
+  * Scalability: potential scaling capacity (including number of nodes, pods, devices etc. at the edge) under different load conditions.
   * CPU Usage: measure the cpu usage of KubeEdge under different load conditions.
   * Memory Usage: measure the memory usage of KubeEdge under different load conditions.
-* Performance test should be able to run against both dockerized and un-dockerized version of KubeEdge.
+* Performance test should be able to run against both containerized and un-containerized version of KubeEdge.
 
 ### Non-goals
 
-* To design the specific implementation of single performance test.
+* To design the specific implementation details of any single performance test.
 
 ## Proposal
 
@@ -60,14 +60,25 @@ Every running KubeEdge Performance Test setup looks like the following:
 
 1. A real K8S Cluster that has master and nodes.
 2. A separated VM where the KubeEdge Cloud Part Services are running, including Edge Controller and Cloud Hub and so on.
-3. Test Client(E2E) will build KubeEdge EdgeNode image and put into the Docker Hub repository.
+3. Test Client(E2E) will build KubeEdge EdgeNode image and put into any reachable container image registry.
 4. Test Client(E2E) uses the deployment controller to deploy KubeEdge EdgeNodes as pods with replicas.
 
 When using the KubeEdge Performance Test, the developer is responsible for creating #1 and #2 above.
 
-Test Client will do the rest of the setup like building KubeEdge EdgeNode image and push the image to Docker repository.
+Test Client will do the rest of the setup like building KubeEdge EdgeNode image and push the image to container image registry.
 Once the image is pushed sucessfully, Test Client uses the deployment object to deploy KubeEdge Nodes as pods
 and waits until all the pods come up and **Running**.
+
+#### Test Client
+| Subject                        | Description                                  |
+|--------------------------------|----------------------------------------------|
+| OS                             |  Ubuntu 18.04 server 64bit                   |
+| CPU                            |  4vCPUs                                      |
+| RAM                            |  8GB                                         |
+| Disk Size                      |  40GB                                        |
+| Count                          |  1                                           |
+
+This VM is used to deploy KubeEdge and run the performance test for KubeEdge.
 
 #### K8S Master
 | Subject                        | Description                                  |
@@ -78,33 +89,25 @@ and waits until all the pods come up and **Running**.
 | CPU                            |  32vCPUs                                     |
 | RAM                            |  128GB                                       |
 | Disk Size                      |  40GB                                        |
-| Count                          |  1                                           |
+| Count                          |  2                                           |
 
-This VM is used to run K8S Master Services including K8S API Server and K8S Scheduler and so on.
-
-#### KubeEdge Cloud Part
-| Subject                        | Description                                  |
-|--------------------------------|----------------------------------------------|
-| OS                             |  Ubuntu 18.04 server 64bit                   |
-| Docker Version                 |  v17.09                                      |
-| CPU                            |  32vCPUs                                     |
-| RAM                            |  128GB                                       |
-| Disk Size                      |  40GB                                        |
-| Count                          |  1                                           |
-
-This VM is used to run KubeEdge Cloud Part Services including Edge Controller and Cloud Hub and so on.
+These two VMs are used to run K8S Master Services including K8S API Server and K8S Scheduler and so on.
+One of them is used to deploy KubeEdge Cloud Part and KubeEdge Edge Nodes as pods.
+The other one is used to run the performance test for KubeEdge.
 
 #### K8S Nodes
 | Subject                        | Description                                  |
 |--------------------------------|----------------------------------------------|
 | OS                             |  Ubuntu 18.04 server 64bit                   |
+| K8S Version                    |  v1.13.5                                     |
 | Docker Version                 |  v17.09                                      |
 | CPU                            |  32vCPUs                                     |
 | RAM                            |  128GB                                       |
 | Disk Size                      |  40GB                                        |
-| Count                          |  1...N                                       |
+| Count                          |  2...N                                       |
 
-These VMs are used to deploy numbers of KubeEdge Edge Nodes pods which are running Edged and EdgeHub and so on.
+One of these VMs is used to run KubeEdge Cloud Part pod which are running EdgeController and CloudHub.
+The other VMs are used to run numbers of KubeEdge Edge Nodes pods which are running Edged and EdgeHub and so on.
 We will adjust the Count of VMs based on the KubeEdge Edge Nodes numbers.
 
 KubeEdge Performance Test setup is similar with K8S KubeMark setup,
