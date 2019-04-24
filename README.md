@@ -4,11 +4,13 @@
 
 * **Performance Framework developement (Owner: @pavan187) (Status: In Progress)**
 
+* **Change poll into list watch in E2E (Owner: @edisonxiang) (Status: In Progress)**
+
+* Mock CloudHub and EdgeHub (Owner: @edisonxiang) (Status: To be started)
+
 * Implementation of identified performance scenario's SLO - Pod Startup time (Owner: @pavan187) (Status: In Progress)
 
 * load test for SLO - Pod Startup time Benchmark (Owner: @pavan187) (Status: To be started, Planned to finish by 26/04/2019)
-
-* Mock CloudHub and EdgeHub (Owner: @edisonxiang) (Status: To be started)
 
 * Output time duration per test case (Owner: @edisonxiang) (Status: Done)
 
