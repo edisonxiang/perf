@@ -12,6 +12,10 @@
 
 * load test for SLO - Pod Startup time Benchmark (Owner: @pavan187) (Status: To be started, Planned to finish by 26/04/2019)
 
+* Change deployment of perf (Owner: @edisonxiang) (Status: Done)
+ 
+  https://github.com/kubeedge/kubeedge/pull/308
+
 * Output time duration per test case (Owner: @edisonxiang) (Status: Done)
 
   https://github.com/kubeedge/kubeedge/pull/397
