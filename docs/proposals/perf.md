@@ -58,16 +58,22 @@ This proposal lists the possible performance test scenarios and test cases for K
 
 Every running KubeEdge Performance Test setup looks like the following:
 
-1. A real K8S Cluster that has master and nodes.
-2. A separated VM where the KubeEdge Cloud Part Services are running, including Edge Controller and Cloud Hub and so on.
-3. Test Client(E2E) will build KubeEdge EdgeNode image and put into any reachable container image registry.
-4. Test Client(E2E) uses the deployment controller to deploy KubeEdge EdgeNodes as pods with replicas.
+1. A real K8S Cluster that has K8S Master and Nodes as **K8S Cluster 1** including **VM2**,**VM3** and other **VMs** shown in the above figure. This Cluster is used to deploy KubeEdge as deployment.
+2. A real K8S Master that is used for performance test as **VM4** shown in the above figure.
+3. KubeEdge Cloud Part image and KubeEdge Edge Node image are built and put into any reachable container image registry.
+4. Test Client as **VM1** shown in the above figure uses the deployment controller
+to deploy KubeEdge Cloud Part pod and KubeEdge Edge Node pods respectively,
+and then launches performance test for KubeEdge.
 
-When using the KubeEdge Performance Test, the developer is responsible for creating #1 and #2 above.
-
-Test Client will do the rest of the setup like building KubeEdge EdgeNode image and push the image to container image registry.
-Once the image is pushed sucessfully, Test Client uses the deployment object to deploy KubeEdge Nodes as pods
+Before runing the KubeEdge Performance Test, the developer is responsible for creating 1~3 above.
+Test Client uses the deployment object to deploy KubeEdge Cloud Part pod and KubeEdge Edge Node pods,
 and waits until all the pods come up and **Running**.
+The KubeEdge Cloud Part pod will be running in the independent VM as **VM3** shown in the above figure.
+The KubeEdge Edge Node pods will be running the other K8S Nodes.
+Once the KubeEdge Cloud Part and KubeEdge Edge Nodes are running,
+KubeEdge Cloud Part will try to connect with K8S Master as **VM4** shown in the above figure,
+and KubeEdge Edge Nodes will try to connect with KubeEdge Cloud Part.
+At last, another K8S Cluster is made up as **K8S Cluster 2** shown in the above figure.
 
 #### Test Client
 | Subject                        | Description                                  |
@@ -80,7 +86,7 @@ and waits until all the pods come up and **Running**.
 
 This VM is used to deploy KubeEdge and run the performance test for KubeEdge.
 
-#### K8S Master
+#### K8S Masters
 | Subject                        | Description                                  |
 |--------------------------------|----------------------------------------------|
 | OS                             |  Ubuntu 18.04 server 64bit                   |
@@ -92,7 +98,7 @@ This VM is used to deploy KubeEdge and run the performance test for KubeEdge.
 | Count                          |  2                                           |
 
 These two VMs are used to run K8S Master Services including K8S API Server and K8S Scheduler and so on.
-One of them is used to deploy KubeEdge Cloud Part and KubeEdge Edge Nodes as pods.
+One of them is used to deploy KubeEdge Cloud Part pod and KubeEdge Edge Node pods.
 The other one is used to run the performance test for KubeEdge.
 
 #### K8S Nodes
@@ -106,14 +112,16 @@ The other one is used to run the performance test for KubeEdge.
 | Disk Size                      |  40GB                                        |
 | Count                          |  2...N                                       |
 
-One of these VMs is used to run KubeEdge Cloud Part pod which are running EdgeController and CloudHub.
-The other VMs are used to run numbers of KubeEdge Edge Nodes pods which are running Edged and EdgeHub and so on.
+One of these VMs is used to run KubeEdge Cloud Part pod which is running EdgeController and CloudHub and so on.
+The other VMs are used to run numbers of KubeEdge Edge Node pods which are running Edged and EdgeHub and so on.
 We will adjust the Count of VMs based on the KubeEdge Edge Nodes numbers.
 
 KubeEdge Performance Test setup is similar with K8S KubeMark setup,
-where they simulate numbers of hollow-nodes in pods and deploy on K8S Cluster.
-In KubeEdge we also do the similar kind of simulation for creating KubeEdge Edge Nodes
-in pods and deploy the pods through deployment. Our pod takes up resources as below:
+where they simulate numbers of hollow-node pods and deploy on K8S Cluster.
+In KubeEdge we also do the similar kind of simulation for creating KubeEdge Edge Node pods
+and deploy the pods through deployment, the difference is that we use docker in docker for KubeEdge Edge Nodes.
+That means the applications deployed by KubeEdge will be running in the KubeEdge Edge Node pods.
+Our pod takes up resources as below:
 - 1 pod : 0.10 vCPU & 250MB RAM
 
 With KubeEdge pod deployment we can accomodate 10 pods/1vCPU approximately.
