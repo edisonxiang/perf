@@ -10,7 +10,7 @@ approvers:
   - "@Baoqiang-Zhang"
   - "@m1093782566"
 creation-date: 2019-03-28
-last-updated: 2019-04-18
+last-updated: 2019-04-26
 status: Pending
 ---
 
@@ -333,8 +333,6 @@ Test Cases:
 * Measure CPU and Memory Usage of KubeEdge Cloud Part.
 
   Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200...]`.
-
-  Device numbers per Edge Node are one of `[1, 10, 20, 50, 100, 200...]`.
 
 * Measure CPU and Memory Usage of KubeEdge Edge Part.
 
