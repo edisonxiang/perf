@@ -326,17 +326,25 @@ Test Cases:
 
   Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200...]`.
 
+  Pods numbers per Edge Node are one of `[1, 2, 5, 10, 20...]`.
+
 * Measure the throughput between KubeEdge CloudHub and KubeEdge EdgeHub.
 
   Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200...]`.
+
+  Pods numbers per Edge Node are one of `[1, 2, 5, 10, 20...]`.
 
 * Measure CPU and Memory Usage of KubeEdge Cloud Part.
 
   Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200...]`.
 
+  Pods numbers per Edge Node are one of `[1, 2, 5, 10, 20...]`.
+
 * Measure CPU and Memory Usage of KubeEdge Edge Part.
 
   Edge Nodes numbers are one of `[1, 10, 20, 50, 100, 200...]`.
+
+  Pods numbers per Edge Node are one of `[1, 2, 5, 10, 20...]`.
 
 As the result of the latency and throughput, we can evaluate scalability of KubeEdge EdgeHubs also the same with KubeEdge Edge Nodes.
 
